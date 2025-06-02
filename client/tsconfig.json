@@ -1,25 +1,74 @@
 {
   "compilerOptions": {
+    /* Especifica la versión de JavaScript que emitirá el compilador.
+       En este caso, se usa ES2020 para aprovechar características modernas. */
     "target": "ES2020",
+
+    /* Permite que las propiedades definidas en clases sean tratadas como definidas
+       usando la sintaxis de “define” en lugar de asignaciones posteriores. */
     "useDefineForClassFields": true,
+
+    /* Bibliotecas de JavaScript y DOM que estarán disponibles para el compilador.
+       - "ES2020": todas las APIs de ECMAScript 2020.
+       - "DOM": APIs estándar del navegador (documento, elementos, etc.).
+       - "DOM.Iterable": soporta objetos iterables en el contexto del DOM. */
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    /* Módulo de salida que usará el compilador. "ESNext" genera módulos ES nativos 
+       tal como están en los archivos fuente, sin transpilar a CommonJS ni AMD. */
     "module": "ESNext",
+
+    /* Omite la comprobación de tipos en las librerías externas (node_modules), 
+       agilizando la compilación y evitando errores sobre definiciones de terceros. */
     "skipLibCheck": true,
 
-    /* Bundler mode */
+    /* Configuración para resolver módulos en modo "bundler" (p. ej. Vite, Webpack 5, esbuild).
+       Esto permite importaciones que un empaquetador moderno entenderá correctamente. */
     "moduleResolution": "bundler",
+
+    /* Permite importar directamente archivos TypeScript (.ts, .tsx) sin tener que omitir la
+       extensión en la ruta de importación (por ejemplo, import Foo from "./Foo.ts"). */
     "allowImportingTsExtensions": true,
+
+    /* Habilita la importación de archivos JSON como módulos, de forma que
+       `import config from "./config.json";` funcione y su tipado sea inferido. */
     "resolveJsonModule": true,
+
+    /* Asegura que cada archivo se compila de forma aislada, lo cual es necesario
+       cuando se usa Babel o un empaquetador que transpila archivo por archivo. */
     "isolatedModules": true,
+
+    /* No genera archivos de salida (.js). Útil cuando se usa TypeScript solo para comprobar tipos,
+       y luego se deja que otro proceso (Babel, empaquetador) se encargue de emitir código. */
     "noEmit": true,
+
+    /* Configura cómo se genera JSX:
+       - "react-jsx" usa la transformación automática de JSX introducida en React 17+, 
+         donde no es necesario importar React en cada archivo. */
     "jsx": "react-jsx",
 
-    /* Linting */
+    /* ------ Opciones de linting y control de calidad ------ */
+
+    /* Habilita todas las comprobaciones estrictas de TypeScript (strict mode),
+       lo que activa: noImplicitAny, strictNullChecks, strictFunctionTypes, entre otros. */
     "strict": true,
+
+    /* Produce un error si hay variables locales que quedan declaradas pero nunca usadas. */
     "noUnusedLocals": true,
+
+    /* Produce un error si hay parámetros de función que se definen pero nunca se utilizan. */
     "noUnusedParameters": true,
+
+    /* Previene que una cláusula `case` en un switch continúe hacia abajo 
+       en el siguiente `case` sin un `break` explícito. */
     "noFallthroughCasesInSwitch": true
   },
+
+  /* Indica al compilador que solo incluya el contenido de la carpeta "src" para 
+     comprobaciones de tipo y compilación. */
   "include": ["src"],
+
+  /* Referencia a otro archivo de configuración (tsconfig.node.json). 
+     Útil para separar configuraciones específicas de Node.js. */
   "references": [{ "path": "./tsconfig.node.json" }]
 }

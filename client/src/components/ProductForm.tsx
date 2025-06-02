@@ -3,6 +3,10 @@ import { Product } from "../types"
 type ProductFormProps = {
     product?: Product
 }
+// This component is used to create or edit a product
+// It receives a product prop which is optional 
+// If the product prop is provided, it will be used to populate the form fields
+// If the product prop is not provided, the form will be empty
 
 export default function ProductForm({product} : ProductFormProps) {
   return (

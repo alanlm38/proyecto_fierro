@@ -26,6 +26,7 @@ export async function addProduct(data : ProductData) {
         console.log(error)
     }
 }
+// Compare this snippet from proyecto_fierro/proyecto_fierro/client/src/routes/products.tsx:
 
 export async function getProducts() {
     try {
