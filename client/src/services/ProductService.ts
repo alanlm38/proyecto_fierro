@@ -26,12 +26,21 @@ export async function addProduct(data : ProductData) {
         console.log(error)
     }
 }
-// Compare this snippet from proyecto_fierro/proyecto_fierro/client/src/routes/products.tsx:
 
-export const getProducts = async (sortBy: string = 'id', order: string = 'DESC'): Promise<Product[]> => {
-    const response = await fetch(`/api/productos?sortBy=${sortBy}&order=${order}`)
-    const data = await response.json()
-    return data.data
+export async function getProducts(sortBy: string = 'id', order: string = 'DESC') {
+    try {
+        const url = `${import.meta.env.VITE_API_URL}/api/products?sortBy=${sortBy}&order=${order}`
+        const { data } = await axios(url)
+        const result = safeParse(ProductsSchema, data.data)
+        if(result.success) {
+            return result.output
+        } else {
+            throw new Error('Hubo un error...')
+        }
+    } catch (error) {
+        console.log(error)
+        return []
+    }
 }
 
 export async function getProductById(id : Product['id']) {
