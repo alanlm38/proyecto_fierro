@@ -48,4 +48,9 @@ server.use('/api/products', router)
 // Docs
 server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions) )
 
+server.get('/', (req, res) => {
+  res.send('✅ API RESTful funcionando correctamente en Render 🚀');
+});
+
+
 export default server
