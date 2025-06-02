@@ -4,15 +4,19 @@ import { getProductById, updateProduct } from '../services/ProductService'
 import { Product } from '../types'
 import ProductForm from '../components/ProductForm'
 
-export async function loader({params} : LoaderFunctionArgs) {
-    if(params.id !== undefined) {
-        const product = await getProductById(+params.id)
-        if(!product) {
-            return redirect('/')
+export async function loader({ params }: LoaderFunctionArgs) {
+    if (params.id !== undefined) {
+        const product = await getProductById(+params.id);
+        if (!product) {
+            return redirect('/');
         }
-        return product
+        return product;
     }
+
+    // ✅ Evita que falle si params.id no está
+    return null;
 }
+
 
 export async function action({request, params} : ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData())
