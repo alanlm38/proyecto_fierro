@@ -10,8 +10,9 @@ import db from './config/db'
 // Conectar a base de datos
 export async function connectDB() {
     try {
-        await db.authenticate()
-        await db.sync({ force: true }) // 🔥 CUIDADO: elimina y vuelve a crear las tablas
+       await db.authenticate()
+await db.sync({ force: true }) // Esto recreará las tablas
+
 
         // console.log( colors.blue( 'Conexión exitosa a la BD'))
     } catch (error) {
