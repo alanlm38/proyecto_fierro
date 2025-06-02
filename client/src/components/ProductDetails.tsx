@@ -69,3 +69,7 @@ export default function ProductDetails({product} : ProductDetailsProps) {
         </tr> 
     )
 }
+// <ProductDetails /> es un componente que muestra los detalles de un producto específico.
+// Recibe un objeto product como prop y muestra su nombre, precio y disponibilidad. 
+// También incluye botones para editar y eliminar el producto, con acciones correspondientes.
+// El botón de disponibilidad cambia su texto y estilo según el estado del producto.

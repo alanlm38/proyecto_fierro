@@ -26,15 +26,19 @@ const server = express()
 // Permitir conexiones
 const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
-    if (!origin || origin === process.env.FRONTEND_URL) {
+    const allowedOrigin = process.env.FRONTEND_URL;
+
+    if (!origin || origin.startsWith(allowedOrigin!)) {
       callback(null, true);
     } else {
+      console.error('❌ CORS bloqueado para:', origin);
       callback(new Error('Error de CORS'));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   credentials: true
 };
+
 
 server.use(cors(corsOptions))
 
