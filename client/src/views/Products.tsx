@@ -4,9 +4,15 @@ import ProductDetails from '../components/ProductDetails';
 import { Product } from '../types';
 
 export async function loader() {
-  const products = await getProducts()
-  return products
+  try {
+    const products = await getProducts();
+    return products ?? []; // si es null o undefined, retorna []
+  } catch (error) {
+    console.error('Error en loader de productos:', error);
+    return []; // evitar que el loader falle
+  }
 }
+
 
 export async function action({request} : ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData())
