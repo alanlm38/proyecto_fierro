@@ -1,18 +1,20 @@
-import { ActionFunctionArgs, Link, useLoaderData} from 'react-router-dom'
+import { ActionFunctionArgs, Link, useLoaderData, useSearchParams} from 'react-router-dom'
 import { getProducts, updateProductAvailability } from '../services/ProductService'
 import ProductDetails from '../components/ProductDetails';
 import { Product } from '../types';
 
-export async function loader() {
+export async function loader({ request }: ActionFunctionArgs) {
   try {
-    const products = await getProducts();
+    const url = new URL(request.url)
+    const sortBy = url.searchParams.get('sortBy') || 'id'
+    const order = url.searchParams.get('order') || 'DESC'
+    const products = await getProducts(sortBy, order);
     return products ?? []; // si es null o undefined, retorna []
   } catch (error) {
     console.error('Error en loader de productos:', error);
     return []; // evitar que el loader falle
   }
 }
-
 
 export async function action({request} : ActionFunctionArgs) {
     const data = Object.fromEntries(await request.formData())
@@ -21,8 +23,15 @@ export async function action({request} : ActionFunctionArgs) {
 }
 
 export default function Products() {
-
   const data = useLoaderData() as Product[]
+  const [searchParams, setSearchParams] = useSearchParams()
+  const currentSortBy = searchParams.get('sortBy') || 'id'
+  const currentOrder = searchParams.get('order') || 'DESC'
+
+  const handleSort = (column: string) => {
+    const newOrder = currentSortBy === column && currentOrder === 'ASC' ? 'DESC' : 'ASC'
+    setSearchParams({ sortBy: column, order: newOrder })
+  }
 
   return (
     <>
@@ -41,9 +50,24 @@ export default function Products() {
             <table className="w-full mt-5 table-auto">
                 <thead className="bg-slate-800 text-white">
                     <tr>
-                        <th className="p-2">Producto</th>
-                        <th className="p-2">Precio</th>
-                        <th className="p-2">Disponibilidad</th>
+                        <th 
+                            className="p-2 cursor-pointer hover:bg-slate-700"
+                            onClick={() => handleSort('name')}
+                        >
+                            Producto {currentSortBy === 'name' && (currentOrder === 'ASC' ? '↑' : '↓')}
+                        </th>
+                        <th 
+                            className="p-2 cursor-pointer hover:bg-slate-700"
+                            onClick={() => handleSort('price')}
+                        >
+                            Precio {currentSortBy === 'price' && (currentOrder === 'ASC' ? '↑' : '↓')}
+                        </th>
+                        <th 
+                            className="p-2 cursor-pointer hover:bg-slate-700"
+                            onClick={() => handleSort('availability')}
+                        >
+                            Disponibilidad {currentSortBy === 'availability' && (currentOrder === 'ASC' ? '↑' : '↓')}
+                        </th>
                         <th className="p-2">Acciones</th>
                     </tr>
                 </thead>
