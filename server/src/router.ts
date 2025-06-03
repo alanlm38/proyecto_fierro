@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { body, param } from 'express-validator'
-import { createProduct, deleteProduct, getProductById, getProducts, updateAvailability, updateProduct } from './handlers/product'
+import { createProduct, deleteProduct, getProductById, getProducts, updateAvailability, updateProduct,exportProductsToExcel } from './handlers/product'
 import { handleInputErrors } from './middleware'
 
 const router = Router()
@@ -255,5 +255,26 @@ router.delete('/:id',
     handleInputErrors,
     deleteProduct
 )
+
+/**
+ * @swagger
+ * /api/products/export/excel:
+ *   get:
+ *     summary: Export products list as an Excel file
+ *     tags:
+ *       - Products
+ *     description: Generates a .xlsx containing all products and forces download
+ *     responses:
+ *       200:
+ *         description: XLSX file download
+ *         content:
+ *           application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *       500:
+ *         description: Internal Server Error
+ */
+router.get('/export/excel', exportProductsToExcel)  // ← Aquí montas el endpoint
 
 export default router
