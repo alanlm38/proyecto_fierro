@@ -1,4 +1,4 @@
-OB# Proyecto: Administrador de Productos (Fullstack - PERN)
+## Proyecto: Administrador de Productos (Fullstack - PERN)
 
 Sistema de gestión de productos desarrollado como proyecto final para la materia *Ingeniería de Software* de la carrera Ingeniería en Sistemas computacionales en el Instituto Tecnológico de Celaya.
 
