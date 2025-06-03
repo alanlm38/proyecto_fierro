@@ -1,4 +1,4 @@
-# Proyecto: Administrador de Productos (Fullstack - PERN)
+OB# Proyecto: Administrador de Productos (Fullstack - PERN)
 
 Sistema de gestión de productos desarrollado como proyecto final para la materia *Construcción de Aplicaciones de Software*.
 
@@ -156,3 +156,5 @@ Disponible en `http://localhost:4000/api-docs`
 ---
 
 🚀 Proyecto listo para entrega y demostración.
+
+Proyecto semetre Enero-Junio 2025 Ingeniería de Software
