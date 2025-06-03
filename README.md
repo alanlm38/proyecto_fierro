@@ -9,6 +9,27 @@ Tecnologías utilizadas:
 * **Testing**: Jest, Supertest
 * **Deployment**: Render (backend), Vercel (frontend)
 
+## Historial de versiones 
+ 
+### [v1.0.0] - Inicio 
+- Configuración de React con Vite + TS 
+- Configuración de Express y PostgreSQL 
+- Endpoint base para productos 
+ 
+### [v1.1.0] - CRUD completo 
+- Formulario para crear productos 
+- Listado general 
+- Edición y eliminación funcional
+
+### [v1.3.0] - Implementación de Innovaciones
+- Mejora de experiencia de usuario 
+ 
+### [v1.2.0] - Deploy 
+- Backend desplegado en Render 
+- Frontend en Vercel 
+- Conexión segura entre frontend y backend 
+ 
+
 ---
 
 ## 📅 MVP - Story Map
