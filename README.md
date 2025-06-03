@@ -154,7 +154,9 @@ Disponible en `http://localhost:4000/api-docs`
 | Innovación propuesta                        | ✅      |
 
 ---
+Sprint del proyecto completo
 
 🚀 Proyecto listo para entrega y demostración.
 
 Proyecto semetre Enero-Junio 2025 Ingeniería de Software
+
