@@ -142,22 +142,16 @@ Disponible en `http://localhost:4000/api-docs`
 
 ## ✨ Funcionalidad innovadora
 
-**Control visual de disponibilidad**:
+**Ordenar productos**:
 
-* Cada producto tiene un switch para activar/desactivar su disponibilidad.
-* Se actualiza al instante mediante `PATCH`.
-* Visualmente se representa con color e íconos.
+* Mejora visual de los productos.
+* Ordena por diferentes columnas (nombre, precio, disponibilidad).
+* Permite ordenar de forma ascendente o descendente.
 
----
-
-## 📖 Historial de versiones
-
-| Versión | Fecha      | Cambios                                                    |
-| ------- | ---------- | ---------------------------------------------------------- |
-| 1.0.0   | 2025-05-28 | Estructura base del proyecto, conexión a BD y endpoints    |
-| 1.1.0   | 2025-05-29 | Agregada validación ZOD y pruebas con Supertest            |
-| 1.2.0   | 2025-05-30 | Documentación Swagger, deployment en Render y Vercel       |
-| 1.3.0   | 2025-05-31 | Funcionalidad innovadora: control de disponibilidad visual |
+**Exportación de los productos a Excel**
+* Exportación automática
+* Facilita la gestión y respaldo de productos
+* Generación de reportes fuera del sistema
 
 ---
 
